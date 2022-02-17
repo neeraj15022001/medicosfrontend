@@ -1,7 +1,19 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import pill from "../../../assets/pill.png";
+import {fetchMedicines} from "../../../services";
 
 function Directory() {
+    const [medicines, setMedicines] = useState([]);
+    useEffect(() => {
+        let mounted = true;
+        fetchMedicines()
+            .then(res => {
+                if (mounted) {
+                    setMedicines(res.medicines);
+                }
+            })
+        return () => mounted = false
+    }, [])
     return (
         <section className={"p-10"}>
             <div className="flex flex-col">
@@ -41,38 +53,39 @@ function Directory() {
                                 </tr>
                                 </thead>
                                 <tbody className="bg-white divide-y divide-gray-200">
-                                <tr>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="flex items-center">
-                                            <div className="flex-shrink-0 h-10 w-10">
-                                                <img className="h-10 w-10 rounded-full" src={pill} alt=""/>
-                                            </div>
-                                            <div className="ml-4">
-                                                <div
-                                                    className="text-sm font-medium text-gray-900 capitalize">glimisave
+                                {medicines.map(medicine => (
+                                    <tr key={medicine._id}>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            <div className="flex items-center">
+                                                <div className="flex-shrink-0 h-10 w-10">
+                                                    <img className="h-10 w-10 rounded-full" src={pill} alt=""/>
+                                                </div>
+                                                <div className="ml-4">
+                                                    <div
+                                                        className="text-sm font-medium text-gray-900 capitalize">{medicine.name}
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="text-sm text-gray-900 capitalize">candid</div>
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 capitalize">Rs
-                                        120
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            <div className="text-sm text-gray-900 capitalize">{medicine.brand}</div>
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 capitalize">
+                                            {medicine.currency + " " + medicine.price}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
                           <span
                               className=" capitalize px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                            yes
+                            {medicine.availability ? "Yes" : "No"}
                           </span>
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                                            More Details
-                                        </a>
-                                    </td>
-                                </tr>
-
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <a href="#" className="text-indigo-600 hover:text-indigo-900" id={medicine._id}>
+                                                More Details
+                                            </a>
+                                        </td>
+                                    </tr>
+                                ))}
                                 </tbody>
                             </table>
                         </div>
