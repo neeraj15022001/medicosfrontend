@@ -9,14 +9,18 @@ function AppBar() {
             <span className={"uppercase text-gray-600 font-bold cursor-pointer text-3xl"}><Link to={"/"}><span
                 className={"uppercase text-blue-600"}>med</span>icos</Link></span>
                 <div className={"flex-1 flex items-center justify-end"}>
-                    <button
-                        className={"bg-blue-600 transition hover:bg-blue-700 px-8 py-2 capitalize text-white rounded-full mr-2"}>
-                        <Link to={"/login"}>login</Link>
-                    </button>
-                    <button
-                        className={"bg-white border border-blue-600 transition hover:bg-blue-600 hover:text-white px-8 py-2 capitalize text-blue-600 rounded-full"}>
-                        <Link to={"/register"}>register</Link>
-                    </button>
+                    <Link to={"/login"}>
+                        <button
+                            className={"bg-blue-600 transition hover:bg-blue-700 px-8 py-2 capitalize text-white rounded-full mr-2"}>
+                            login
+                        </button>
+                    </Link>
+                    <Link to={"/register"}>
+                        <button
+                            className={"bg-white border border-blue-600 transition hover:bg-blue-600 hover:text-white px-8 py-2 capitalize text-blue-600 rounded-full"}>
+                            register
+                        </button>
+                    </Link>
                 </div>
             </nav>
             <section className={"flex h-16"}>
@@ -26,7 +30,8 @@ function AppBar() {
         </>
 
 
-    );
+    )
+        ;
 }
 
 export default AppBar;

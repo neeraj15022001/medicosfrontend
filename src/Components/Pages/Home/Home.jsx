@@ -3,11 +3,15 @@ import home from "../../../assets/home.svg"
 
 function Home() {
     return (
-        <section className={"flex items-center justify-center h-screen relative"}>
-            <section className={"absolute top-6"}>
-                <h1 className={"text-gray-600 font-bold text-2xl capitalize"}>Medicines Directory in your pocket</h1>
+        <section className={"flex h-screen"}>
+            <section className={"flex-1 flex flex-col justify-center pl-16 mb-20"}>
+                <h1 className={"text-gray-600 font-black text-8xl capitalize"}>Medicines</h1>
+                <p className={"text-gray-600 font-black text-8xl capitalize"}>Directory</p>
+                <p className={"text-6xl text-blue-600 align-top font-black mt-6 capitalize"}>in your pocket</p>
             </section>
-            <img src={home} alt="home" className={"w-1/2"}/>
+            <section className={"flex-1 flex items-center justify-center"}>
+                <img src={home} alt="home" className={"w-full"}/>
+            </section>
         </section>
     );
 }
