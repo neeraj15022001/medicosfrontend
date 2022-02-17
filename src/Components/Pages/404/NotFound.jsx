@@ -1,10 +1,11 @@
 import React from 'react';
+import notfound from "../../../assets/notfound.svg";
 
 function NotFound() {
     return (
-        <div>
-            <h1>Not Found</h1>
-        </div>
+        <section className={"flex items-center justify-center h-screen"}>
+            <img src={notfound} alt="Not Found" className={"h-full"}/>
+        </section>
     );
 }
 
