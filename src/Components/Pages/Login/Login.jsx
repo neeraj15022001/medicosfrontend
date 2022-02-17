@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from "../../Shared/Form/Form";
+
 function Login() {
     return (
         <section className={"flex h-screen"}>
@@ -7,9 +8,14 @@ function Login() {
                 <div className={"mb-8"}>
                     <p className={"text-5xl font-bold capitalize ml-3 text-gray-600"}>login here</p>
                 </div>
-                <Form loginForm={true} />
+                <Form loginForm={true}/>
             </section>
-            <section className={"flex-1 bg-blue-100 box-border"}></section>
+            <section className={"flex-1 bg-blue-100 box-border"}
+                     style={{
+                         background: "url('https://images.pexels.com/photos/6075009/pexels-photo-6075009.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500') no-repeat",
+                         backgroundSize: "cover",
+                         backgroundPosition: "center"
+                     }}></section>
         </section>
     );
 }

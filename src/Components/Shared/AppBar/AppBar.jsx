@@ -14,7 +14,7 @@ function AppBar() {
                         <Link to={"/login"}>login</Link>
                     </button>
                     <button
-                        className={"bg-gray-400 transition hover:bg-gray-500 px-8 py-2 capitalize text-white rounded-full"}>
+                        className={"bg-white border border-blue-600 transition hover:bg-blue-600 hover:text-white px-8 py-2 capitalize text-blue-600 rounded-full"}>
                         <Link to={"/register"}>register</Link>
                     </button>
                 </div>
