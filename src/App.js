@@ -1,6 +1,6 @@
-import React from 'react';
-import {UserProvider} from "./Context/userContext";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import React, {useContext} from 'react';
+import {UserContext, UserProvider} from "./Context/userContext";
+import {BrowserRouter, Navigate, Outlet, Route, Routes} from "react-router-dom";
 import AppBar from "./Components/Shared/AppBar/AppBar";
 import Home from "./Components/Pages/Home/Home";
 import Login from "./Components/Pages/Login/Login";
@@ -14,13 +14,13 @@ function App() {
         <>
             <UserProvider>
                 <BrowserRouter>
-                <AppBar/>
+                    <AppBar/>
                     <Routes>
                         <Route path={"/"} exact={true} element={<Home/>}/>
                         <Route path={"/login"} element={<Login/>}/>
                         <Route path={"/register"} element={<Register/>}/>
-                        <Route path={"/admin"} element={<Admin />} />
-                        <Route path={"/directory"} element={<Directory />} />
+                        <Route path='/admin' element={<Admin/>}/>
+                        <Route path={"/directory"} element={<Directory/>}/>
                         <Route path={"*"} element={<NotFound/>}/>
                     </Routes>
                 </BrowserRouter>
